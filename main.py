@@ -47,6 +47,10 @@ def sendFile():
             return render_template("result.html", result = result, label = label, link = link, image_path=save_path_name)
     else:
         return render_template("index.html")
+        
+@app.route('/.well-known/acme-challenge/<filename>')
+def well_known(filename):
+    return render_template('.well-known/acme-challenge/' + filename)
 
 if __name__ == '__main__':
     app.run()
