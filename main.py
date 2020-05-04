@@ -44,8 +44,12 @@ def sendFile():
                     label.append(uc03)
                     result.append(val)
                     link.append(src)
-            return render_template("result.html", result = result, label = label, link = link, image_path=save_path_name)
+            return render_template("result.html", result = result, label = label, link = link, image_path = save_path_name)
     else:
+        path = '/var/www/html/static/tmp/'
+        files = os.listdir(path)
+        for i in range(len(files)):
+            os.remove(path + files[i])
         return render_template("index.html")
         
 @app.route('/.well-known/acme-challenge/<filename>')
